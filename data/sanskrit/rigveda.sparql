@@ -1,0 +1,44 @@
+PREFIX conll: <http://ufal.mff.cuni.cz/conll2009-st/task-description.html#>
+PREFIX nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX powla: <http://purl.org/powla/powla.owl>
+
+
+INSERT {
+  ?nif_stanza a powla:Node .
+  ?nif_stanza conll:STANZA_ID ?stanza .
+}
+WHERE
+{
+  ?w conll:STANZA_ID ?stanza .
+   BIND(URI(CONCAT('http://vedaweb.uni-koeln.de#', ?stanza))  as ?nif_stanza)
+}
+
+###
+
+INSERT {
+  ?w powla:hasParent ?l
+}
+WHERE {
+  ?w a nif:Word ;
+     conll:STANZA_ID ?stanza .
+  ?l a powla:Node ;
+     conll:STANZA_ID ?stanza . 
+}
+
+
+###
+
+INSERT {
+  ?nif_version a powla:Node .
+  ?nif_version conll:VERSION_ID ?version .
+}
+WHERE
+{
+  ?w conll:VERSION_ID ?version .
+   BIND(URI(CONCAT('http://vedaweb.uni-koeln.de#', ?version))  as ?nif_version)
+}
+
+
+

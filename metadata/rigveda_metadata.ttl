@@ -1,0 +1,39 @@
+@prefix : <https://github.com/max-ionov/sdllod2019-historical-texts#> .
+@prefix frbr: <http://purl.org/vocab/frbr/core#> .
+@prefix lawd: <http://lawd.info/ontology/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rbib: <http://purl.org/net/xbib#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+### Bibliographic information about the Rigveda
+
+<http://cwkb.org/work/id/1413>#/rdf>
+  a frbr:Work;
+  dc:title "Rigveda"@en ;
+  dc:title "Rigveda"@de ;
+  frbr:creator <http://cwkb.org/author/id/678>;#/rdf> ;
+  dc:identifier "urn:cts:latinLit:phi0690.phi003" ;
+  frbr:realization :aen_ll, :aen_mqdq, :aen_orig_ll, :aen_orig_mqdq .
+
+:version_aufrecht a frbr:Expression ;
+  rdfs:label "Aufrecht" ;
+  rdfs:comment "Aufrecht, Theodor. 1955. Die Hymnen des Rigveda. Erster Teil. Mandala I-VI. Darmstadt: Wissenschaftliche Buchgesellschaft. UND Aufrecht, Theodor. 1955. Die Hymnen des Rigveda. Zweiter Teil. Mandala VII-X. Darmstadt: Wissenschaftliche Buchgesellschaft." .
+
+:version_lubotskyzurich a frbr:Expression ;
+	rdfs:label "Lubotsky(Zurich)" ;
+	rdfs:comment "A version of the Rigveda text based on Lubotsky's concordance, used as the reference text for the annotations added at the University of Zurich" .
+
+:version_lubotsky a frbr:Expression ;
+  rdfs:label "Lubotsky" ;
+  rdfs:comment "Lubotsky, Alexander. 1997. A Rgvedic word concordance. (2 Vols.) New Haven, Conn.: American Oriental Society." .
+
+:version_vannootenholland a frbr:Expression ;
+  rdfs:label "Van Nooten & Holland" ;
+  rdfs:comment "Nooten, Barend A. van & Gary Holland (eds.). 1994. Rig Veda: a metrically restored text with an introduction and notes. Cambridge, Mass. [u.a.]: Harvard University Press." .
+
+:version_padapatha a frbr:Expression ;
+  rdfs:label "Padapatha" ;
+  rdfs:comment "(source info is yet to be provided)" .  
