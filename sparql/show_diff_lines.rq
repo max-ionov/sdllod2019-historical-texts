@@ -1,0 +1,43 @@
+# Gets the words belonging to one line of the Aen. in two different editions
+# Outputs a comparison of the reconstructed text
+# It is still a very experimental query, so... be advised! 
+
+PREFIX conll: <http://ufal.mff.cuni.cz/conll2009-st/task-description.html#>
+PREFIX nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#>
+PREFIX mqdq: <http://mizar.unive.it/mqdq/public/testo/testo/codice/VERG%7Caene%7C001#>
+PREFIX latinlab: <http://thelatinlibrary.com/vergil/aen1.shtml#>
+PREFIX powla: <http://purl.org/powla/powla.owl>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX : <https://github.com/max-ionov/sdllod2019-historical-texts#>
+PREFIX fn: <http://www.w3.org/2005/xpath-functions#>
+
+select (GROUP_CONCAT(distinct ?word; separator=" ") as ?line_ll) (GROUP_CONCAT(distinct ?word1; separator=" ") as ?line_mq) {
+ select ?p ?word ?word1 where {
+  {
+        ?ed_ll rdfs:label "Aeneid (Latin Library)" .
+          ?p a powla:Node ;
+       conll:PASSAGE "4" .
+      ?w a nif:Word ;
+       conll:WORD ?word ;
+       powla:hasParent ?p .
+      ?s a nif:Sentence ;
+       nif:word ?w ;
+       powla:hasParent ?ed_ll .
+  #?ed_mq rdfs:label "Aeneid (Musisque Deoque)" .
+  
+  } optional {
+          ?p a powla:Node ;
+       conll:PASSAGE "4" .
+    ?w1 a nif:Word ;
+       conll:WORD ?word1 ;
+       powla:hasParent ?p .
+    ?s1 a nif:Sentence ;
+       nif:word ?w1 ;
+       powla:hasParent ?ed1 .
+    ?ed1 rdfs:label "Aeneid (Musisque Deoque)" .
+    }
+    
+}
+ order by ?w ?w1 
+}
+group by ?p
