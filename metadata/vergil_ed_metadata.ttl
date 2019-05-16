@@ -1,0 +1,60 @@
+@prefix : <https://github.com/max-ionov/sdllod2019-historical-texts#> .
+@prefix frbr: <http://purl.org/vocab/frbr/core#> .
+@prefix lawd: <http://lawd.info/ontology/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rbib: <http://purl.org/net/xbib#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+### Bibliographic information about the Aeneid
+
+<http://cwkb.org/work/id/1413>#/rdf>
+  a frbr:Work;
+  dc:title "Aeneis"@la ;
+  dc:title "Aeneid"@en ;
+  frbr:creator <http://cwkb.org/author/id/678>;#/rdf> ;
+  dc:identifier "urn:cts:latinLit:phi0690.phi003" ;
+  frbr:realization :aen_ll, :aen_mqdq, :aen_orig_ll, :aen_orig_mqdq .
+
+<http://cwkb.org/author/id/678>#/rdf>
+  a foaf:Person, dc:creator ;
+  rdfs:label "Publio Virgilio Marón"@es, "Publius Vergilius Maro"@la, "Publius Virgilius Maro"@la, "Publio Virgilio Marone"@it, "Virgile"@fr, "Virgil"@en .
+
+:aen_ll a frbr:Expression ;
+	rdfs:label "Aeneid (Latin Library)" ;
+	rdfs:comment "Vergil. Aeneid. Version based on the text published on Latin Library. Annotated using UD-Pipe Proiel" ;
+	frbr:transformationOf :aen_orig_ll .
+
+:aen_mqdq a frbr:Expression ;
+	rdfs:label "Aeneid (Musisque Deoque)" ;
+	rdfs:comment "Vergil. Aeneid.Version based on the text published on Musisque Deoque. Annotated using UD-Pipe Proiel" ;
+	frbr:transformationOf :aen_orig_mqdq .
+
+## Old model
+:ll a foaf:Project ;
+	rdfs:label "The Latin Library" ;
+	foaf:homepage "http://thelatinlibrary.com/index.html" .
+
+:mqdq a foaf:Project ;
+	rdfs:label "Musisque Deoque" ;
+	foaf:homepage "http://mizar.unive.it/mqdq/public/" .
+
+:aen_orig_ll a frbr:Expression ;
+	rdfs:label "Vergil. Aeneid. The Latin Library" ;
+	frbr:realizer :ll .
+
+:aen_orig_mqdq a frbr:Expression ;
+	rdfs:label "Vergil. Aeneid. Musisque Deoque" ;
+	frbr:realizer :mqdq .
+	
+#:aen1_ll a frbr:Endeavour ;
+#	rdfs:label "Aeneid. The Latin Library. Book 1"@en;
+#	frbr:partOf :aen_ll ;
+#	dcat:accessUrl <http://thelatinlibrary.com/vergil/aen1.shtml> .
+
+#:aen1_mqdq a frbr:Endeavour ;
+#	rdfs:label "Aeneid. Musisque Deoque. Book 1"@en ;
+#        dcat:accessUrl <http://mizar.unive.it/mqdq/public/testo/testo/codice/VERG%7Caene%7C001> ;
+#    	frbr:partOf :aen_mqdq .
