@@ -3,6 +3,7 @@ PREFIX nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX powla: <http://purl.org/powla/powla.owl>
+PREFIX : <http://vedaweb.uni-koeln.de#>
 
 
 INSERT {
@@ -13,7 +14,7 @@ WHERE
 {
   ?w conll:STANZA_ID ?stanza .
    BIND(URI(CONCAT('http://vedaweb.uni-koeln.de#', ?stanza))  as ?nif_stanza)
-}
+};
 
 ###
 
@@ -25,7 +26,7 @@ WHERE {
      conll:STANZA_ID ?stanza .
   ?l a powla:Node ;
      conll:STANZA_ID ?stanza . 
-}
+};
 
 
 ###
