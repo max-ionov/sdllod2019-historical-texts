@@ -1,0 +1,27 @@
+PREFIX conll: <http://ufal.mff.cuni.cz/conll2009-st/task-description.html#>
+PREFIX nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX powla: <http://purl.org/powla/powla.owl>
+PREFIX etym: <http://exampledictionary.org/>
+PREFIX lemonet:  <http://www.lemon-model.net/lemon/etym#>
+
+#SELECT ?word ?entry ?root ?lem_URI
+#SELECT ?w_id ?lem_URI ?root 
+INSERT {
+  ?w_id lemonet:derivedFrom ?root
+}
+
+WHERE {
+?w_id a nif:Word; 
+   conll:WORD ?word; 
+   conll:LEMMA ?entry.  
+?entry_id a etym:LEMMA;
+  etym:LABEL ?entry.
+?root_id a etym:ROOT;
+  etym:LABEL ?root.
+?entry_id etym:hasRoot ?root_id.
+  
+#  BIND(URI('http://www.lemon-model.net/lemon/etym#derivedFrom') as ?lem_URI)
+}
+
