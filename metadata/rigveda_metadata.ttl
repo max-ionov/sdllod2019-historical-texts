@@ -16,7 +16,7 @@
   dc:title "Rigveda"@de ;
   frbr:creator <http://cwkb.org/author/id/678>;#/rdf> ;
   dc:identifier "urn:cts:latinLit:phi0690.phi003" ;
-  frbr:realization :aen_ll, :aen_mqdq, :aen_orig_ll, :aen_orig_mqdq .
+  frbr:realization :version_aufrecht, :version_lubotskyzurich, :version_lubotsky, :version_vannootenholland, :version_padapatha .
 
 :version_aufrecht a frbr:Expression ;
   rdfs:label "Aufrecht" ;

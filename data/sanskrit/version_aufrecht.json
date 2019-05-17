@@ -1,0 +1,26 @@
+{
+  "input" : "*version_aufrecht.conll"
+, "output" : "version_aufrecht.ttl"
+, "pipeline" : [ 
+	{ "class" : "CoNLLStreamExtractor",
+		"baseURI" : "https:/vedaweb.uni-koeln.de#",
+		"columns" : ["WORD", "STANZA_ID", "VERSION_ID"]
+	},
+	{ "class" : "CoNLLRDFUpdater"
+		, "models" : [
+			{"source":"data/olia/iswoc.owl", "graph":"http://purl.org/olia/iswoc.owl"}
+			,{"source":"data/olia/iswoc-link.rdf", "graph":"http://purl.org/olia/iswoc.owl"}
+	    ]
+		, "updates" : [
+			{"path":"rigvda.sparql", "iter":"1"}
+		]
+	} ,
+		
+	{ "class" : "CoNLLRDFFormatter"
+		, "modules" : [
+				{"mode":"RDF", "columns": ["WORD", "STANZA_ID", "VERSION_ID"]}
+		]
+	} 
+	
+]
+}
