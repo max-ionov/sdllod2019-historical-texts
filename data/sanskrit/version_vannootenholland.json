@@ -1,6 +1,6 @@
 {
-  "input" : "*version_vannootenholland.conll"
-, "output" : "version_vannootenholland.ttl"
+  "input" : "data/rigveda/version_vannootenholland.conll"
+, "output" : "data/rigveda/version_vannootenholland.ttl"
 , "pipeline" : [ 
 	{ "class" : "CoNLLStreamExtractor",
 		"baseURI" : "https:/vedaweb.uni-koeln.de#",
@@ -12,7 +12,7 @@
 			,{"source":"data/olia/iswoc-link.rdf", "graph":"http://purl.org/olia/iswoc.owl"}
 	    ]
 		, "updates" : [
-			{"path":"rigvda.sparql", "iter":"1"}
+			{"path":"data/rigveda/rigveda.sparql", "iter":"1"}
 		]
 	} ,
 		

@@ -1,6 +1,6 @@
 {
-  "input" : "*version_padapatha.conll"
-, "output" : "version_padapatha.ttl"
+  "input" : "data/rigveda/version_padapatha.conll"
+, "output" : "data/rigveda/version_padapatha.ttl"
 , "pipeline" : [ 
 	{ "class" : "CoNLLStreamExtractor",
 		"baseURI" : "https:/vedaweb.uni-koeln.de#",
@@ -12,7 +12,7 @@
 			,{"source":"data/olia/iswoc-link.rdf", "graph":"http://purl.org/olia/iswoc.owl"}
 	    ]
 		, "updates" : [
-			{"path":"rigvda.sparql", "iter":"1"}
+			{"path":"data/rigveda/rigveda.sparql", "iter":"1"}
 		]
 	} ,
 		
