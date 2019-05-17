@@ -1,0 +1,28 @@
+PREFIX nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> 
+PREFIX conll: <http://ufal.mff.cuni.cz/conll2009-st/task-description.html#>
+
+# Complete the sentence
+#nif:nextWord
+#SELECT ?first ?sentence {
+#  ?first  conll:WORD ?first_val. 
+#  ?last conll:WORD ?last_val.
+#{  
+
+
+SELECT ?first ?last (COUNT(?mid) as ?p_length) (GROUP_CONCAT(?mid_val) AS ?sent) 
+WHERE {
+  ?first  a nif:Word.
+# limited to the first sentence   
+  ?first  conll:WORD "Arma".
+  ?first nif:nextWord+ ?mid .
+  ?mid nif:nextWord+ ?last.
+  ?mid conll:WORD ?mid_val.
+  FILTER NOT EXISTS { ?last nif:nextWord ?after_last }
+  FILTER NOT EXISTS { ?before_first nif:nextWord ?first }
+}
+GROUP BY ?first ?last
+ORDER BY ?first ?p_length
+
+#}
+#  BIND( CONCAT(?fist_val, ?sent, ?last_val) AS ?sentence )    
+#}
